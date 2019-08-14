@@ -1,0 +1,87 @@
+
+#Spring配置
+spring:
+  application:
+    name: zfbh-gateway
+
+#网关配置
+zuul:
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    uaa:
+      path: /uaa/**
+      strip-prefix: true
+      sensitiveHeaders:
+      serviceId: zfbh-auth
+    zfbh-uam:
+      path: /uam/**
+      retryable: true
+      serviceId: zfbh-uam
+    zfbh-ssm:
+      path: /ssm/**
+      retryable: true
+      serviceId: zfbh-ssm
+    zfbh-res:
+      path: /res/**
+      retryable: true
+      serviceId: zfbh-res
+    zfbh-uploader:
+      path: /uploader/**
+      retryable: true
+      serviceId: zfbh-uploader
+    zfbh-com:
+      path: /com/**
+      retryable: true
+      serviceId: zfbh-com
+    zfbh-log:
+      path: /log/**
+      retryable: true
+      serviceId: zfbh-log
+    zfbh-task:
+      path: /task/**
+      retryable: true
+      serviceId: zfbh-task
+    zfbh-form:
+      path: /form/**
+      retryable: true
+      serviceId: zfbh-form
+    zfbh-biz-aj:
+      path: /aj/**
+      retryable: true
+      serviceId: zfbh-biz-aj
+    zfbh-biz-ws:
+      path: /ws/**
+      retryable: true
+      serviceId: zfbh-biz-ws
+    zfbh-biz-rydw:
+      path: /rydw/**
+      retryable: true
+      serviceId: zfbh-biz-rydw
+    zfbh-biz-zjcl:
+      path: /zjcl/**
+      retryable: true
+      serviceId: zfbh-biz-zjcl
+
+#负载均衡配置
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+
+#配置认证
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      access-token-uri: http://localhost:1999/uaa/oauth/token
+    resource:
+      user-info-uri:  http://localhost:1999/uaa/user
+      prefer-token-info: false

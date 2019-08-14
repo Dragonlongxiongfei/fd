@@ -1,0 +1,19 @@
+
+#spring配置
+spring:
+  application:
+    name: zfbh-log
+  kafka:
+    consumer:
+      enable-auto-commit: true
+      group-id: applog
+      auto-offset-reset: latest
+      bootstrap-servers: 192.168.1.6:9092
+
+#OAuth2配置
+security:
+  oauth2:
+    log:
+      id: log
+      user-info-uri: http://localhost:1999/uaa/user
+      prefer-token-info: false

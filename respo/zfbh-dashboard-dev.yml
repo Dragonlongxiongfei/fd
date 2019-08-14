@@ -1,0 +1,5 @@
+
+#spring配置
+spring:
+  application:
+    name: zfbh-dashboard

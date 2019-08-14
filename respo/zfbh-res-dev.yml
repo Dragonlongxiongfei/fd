@@ -1,0 +1,21 @@
+
+#spring配置
+spring:
+  application:
+    name: zfbh-res
+  datasource2:
+    name: jdbc/rdp_bz_case
+    jndi: java:comp/env/jdbc/rdp_bz_case
+    url: jdbc:oracle:thin:@192.168.1.11:1521:zfbh
+    username: rdp_bz_case
+    password: sundun
+    driver-class-name: oracle.jdbc.OracleDriver
+
+#OAuth2配置
+security:
+  oauth2:
+    resource:
+      id: res
+      user-info-uri: http://localhost:1999/uaa/user
+      prefer-token-info: false
+  

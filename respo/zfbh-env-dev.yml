@@ -1,0 +1,99 @@
+#调试模式
+debug: false
+
+#服务器配置
+server:
+  max-http-header-size: 4048576
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-post-size: -1
+
+#Spring配置
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100Mb
+      max-request-size: 1000Mb
+  resources:
+    static-locations: classpath:/META-INF/resources/webjars/,classpath:/static/,classpath:/resources/,classpath:/public/
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    servlet:
+      content-type: text/html
+
+#服务发现注册配置
+eureka:
+  instance:
+    prefer-ip-address: true #使用IP注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    ##续约更新时间间隔设置5秒，m默认30s
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+    health-check-url-path: /actuator/health
+  client:
+    serviceUrl:
+      #服务中心配置
+      defaultZone: http://localhost:1901/eureka/
+
+#熔断隔离配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+
+#feign 默认关闭熔断，请看HystrixFeignConfiguration
+feign:
+  hystrix:
+    enabled: true
+
+#监控端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  security:
+    enabled: false
+
+#负载均衡配置
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+#OAuth2配置
+security:
+  oauth2:
+    swagger:
+      clientId: swagger
+      clientSecret: sundun-swagger
+
+#执法闭环配置
+zfbh:
+  kafka:
+    topic:
+      log:
+        login: sundun-log-login
+        oper: sundun-log-oper
+  mongo:
+    collection:
+      login-log: log_login
+      oper-log: log_oper
+  dic:
+    uploadUrl: http://192.168.1.6:888/upload/dic
+    downloadUrl: http://192.168.1.6:888/dic/

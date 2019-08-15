@@ -47,7 +47,7 @@ spring:
     exceptionSorter: true
     testOnReturn: false
     poolPreparedStatement: true
-    filters: stat,wall,log4j
+    filters: stat,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMills=500
     useGlobalDataSourceStat: true

@@ -72,7 +72,12 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   data:
     mongodb:
-      uri: mongodb://sundun:sundun@192.168.1.200:27017/zbg
+      host: 192.168.1.6
+      port: 27111
+      database: zbg
+  #data:
+   # mongodb:
+    #  uri: mongodb://sundun:sundun@192.168.1.200:27017/zbg
 
 mybatis-plus:
   mapper-locations:

@@ -2,7 +2,7 @@
 #spring配置
 spring:
   application:
-    name: msg
+    name: zfbh-msg
   # 环境 dev|test|prod
   profiles:
     active:

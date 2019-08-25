@@ -1,0 +1,44 @@
+
+#spring配置
+spring:
+  application:
+    name: zfbh-msg
+    #消息队列配置
+  rabbitmq:
+    host: 192.168.1.6
+    port: 5672
+    username: sundun
+    password: sundun
+    #开启消息发送确认
+    publisher-confirms: true
+    #开启发送失败退回
+    publisher-returns: true
+    listener:
+      #开启Ack消息确认
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+        #为了将引起异常的消息存入死信队列，该项必须配置为false
+        default-requeue-rejected: false
+        retry:
+          #开启重试功能
+          enabled: true
+          #最大重试次数5次
+          max-attempts: 5
+          #重试间隔时间2秒
+          initial-interval: 2000
+        #并发消费者初始值
+        concurrency: 20
+        #并发消费者最大值
+        max-concurrency: 50
+        #每个消费者可拉取的消息数量
+        prefetch: 1
+
+#OAuth2配置
+security:
+  oauth2:
+    resource:
+      id: msg
+      user-info-uri: http://192.168.1.6:1999/uaa/user
+      prefer-token-info: false

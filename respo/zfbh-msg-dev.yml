@@ -42,3 +42,16 @@ security:
       id: msg
       user-info-uri: http://localhost:1999/uaa/user
       prefer-token-info: false
+      
+zfbh:
+  kafka:
+    topic:
+      log:
+        login: sundun-log-login
+        oper: sundun-log-oper
+  mongo:
+    collection:
+      login-log: log_login
+      oper-log: log_oper
+      pendig-task-msg: PendigTaskMsg
+      work-remind-msg: WorkRemindMsg

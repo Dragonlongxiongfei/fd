@@ -2,8 +2,39 @@
 #spring配置
 spring:
   application:
-    name: zfbh-msg
-    #消息队列配置
+    name: msg
+  # 环境 dev|test|prod
+  profiles:
+    active:
+      
+  jackson: # jackson时间格式化
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+      default-property-inclusion: NON_NULL
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.6:3306/flowable?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: root
+    password: sundun
+    initial-size: 50 # 初始化大小，最小，最大
+    max-active: 500 # 初始化大小，最小，最大
+    min-idle: 50 # 初始化大小，最小，最大
+    max-wait: 60000 # 配置获取连接等待超时的时间
+    validation-query: SELECT 1 from dual
+    validation-query-timeout: 6000
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+    pool-prepared-statements: true # 打开PSCache，并且指定每个连接上PSCache的大小
+    max-pool-prepared-statement-per-connection-size: 20
+    time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    min-evictable-idle-time-millis: 100000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  #消息队列配置
   rabbitmq:
     host: localhost
     port: 5672
@@ -34,7 +65,27 @@ spring:
         max-concurrency: 50
         #每个消费者可拉取的消息数量
         prefetch: 1
-
+  #redis配置
+  redis:
+    host: 192.168.1.6
+    port: 6379
+    password: sundun
+    timeout: 6000  # 连接超时时长（毫秒）
+    jedis:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 50      # 连接池中的最大空闲连接
+        min-idle: 10       # 连接池中的最小空闲连接
+  data:
+    mongodb:
+      host: 192.168.1.6
+      port: 27111
+      database: zbg
+  #data:
+    #mongodb:
+      #uri: mongodb://sundun:sundun@192.168.1.6:27111/zbg
+  
 #OAuth2配置
 security:
   oauth2:

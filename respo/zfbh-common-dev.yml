@@ -37,7 +37,7 @@ spring:
     driverClassName: oracle.jdbc.OracleDriver
     initialSize: 5
     minIdle: 5
-    maxActive: 20
+    maxActive: 200
     maxWait: 60000
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 30000

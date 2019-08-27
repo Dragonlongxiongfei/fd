@@ -1,0 +1,13 @@
+
+#spring配置
+spring:
+  application:
+    name: zfbh-biz-zfjl
+
+#OAuth2配置
+security:
+  oauth2:
+    resource:
+      id: zfjl
+      user-info-uri: http://192.168.1.6:1999/uaa/user
+      prefer-token-info: false

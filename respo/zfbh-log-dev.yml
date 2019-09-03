@@ -8,7 +8,7 @@ spring:
       enable-auto-commit: true
       group-id: applog
       auto-offset-reset: latest
-      bootstrap-servers: 192.168.1.200:9092,192.168.1.201:9092,192.168.1.202:9092
+      bootstrap-servers: 192.168.1.6:9092
 
 #OAuth2配置
 security:

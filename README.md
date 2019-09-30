@@ -6,6 +6,7 @@ server:
 spring:
   profiles:
     active: git
+    active: subversion
   application:
     name: zfbh-config
   cloud:

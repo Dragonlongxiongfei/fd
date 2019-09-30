@@ -19,7 +19,7 @@ spring:
           uri: https://gitee.com/lxf1994/zfpt/zfbhConfigFiles/trunk
           username: 
           password: 
-          default-label: master
+          search-paths: respo
 #
 #        svn:
 #          uri: 

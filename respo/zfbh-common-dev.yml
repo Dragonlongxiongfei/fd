@@ -28,13 +28,18 @@ spring:
     servlet:
       content-type: text/html
   datasource:
-    name: jdbc/rdp_bz
-    jndi: java:comp/env/jdbc/rdp_bz
-    url: jdbc:oracle:thin:@192.168.1.11:1521:zfbh
-    username: rdp_bz
-    password: sundun    
+    #name: jdbc/rdp_bz
+    #jndi: java:comp/env/jdbc/rdp_bz
+    #url: jdbc:oracle:thin:@192.168.1.11:1521:zfbh
+    #username: rdp_bz
+    #password: sundun    
+    #type: com.alibaba.druid.pool.DruidDataSource
+    #driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:mysql://localhost:3306/zfbh?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: sundun
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: oracle.jdbc.OracleDriver
+    driverClassName: com.mysql.jdbc.Driver
     initialSize: 5
     minIdle: 5
     maxActive: 200

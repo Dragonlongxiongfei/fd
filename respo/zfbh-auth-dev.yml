@@ -60,10 +60,15 @@ spring:
     multi:
     - key: rdp
       extend: false
-      url: jdbc:oracle:thin:@192.168.1.11:1521:zfbh
-      username: rdp_bz
+      url: jdbc:mysql://localhost:3306/zfbh?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
       password: sundun
-      driverClassName: oracle.jdbc.OracleDriver      
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      #url: jdbc:oracle:thin:@192.168.1.11:1521:zfbh
+      #username: rdp_bz
+      #password: sundun
+      #driverClassName: oracle.jdbc.OracleDriver      
   redis:
     host: 192.168.1.6
     port: 6379

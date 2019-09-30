@@ -60,7 +60,7 @@ spring:
     multi:
     - key: rdp
       extend: false
-      url: jdbc:mysql://localhost:3306/zfbh?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://localhost:3306/rdp_bz?useUnicode=true&characterEncoding=utf-8&useSSL=true
       username: root
       password: root
       type: com.alibaba.druid.pool.DruidDataSource

@@ -16,14 +16,14 @@ spring:
           enabled: true
         git:
           uri: https://gitee.com/lxf1994/zfpt/zfbhConfigFiles/trunk
-          username: 597143874@qq.com
-          password: afeilovemeng
+          username: 
+          password: 
           default-label: master
 #
 #        svn:
-#          uri: https://101.201.146.205/svn/LINE-PD-ZF/ZFBH/2代码类/版本V3.0/zfbhConfigFiles
-#          username: zhanchuanyu
-#          password: zcy0678
+#          uri: 
+#          username: 
+#          password: 
 #          default-label: trunk
 
 management:
